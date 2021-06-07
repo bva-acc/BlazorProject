@@ -1,0 +1,68 @@
+﻿@code {
+    private List<Game> games { get; set; }
+
+    protected async override Task OnInitializedAsync()
+    {
+        await Task.Delay(3000);
+        games = new List<Game>()
+        {
+            new Game()
+            {
+                Name = "Adepts of Might and Magic",
+                Genre = "Strategy",
+                ReleaseDate = new DateTime(1999, 02, 23)
+            },
+            new Game()
+            {
+                Name = "FM-Simulator 2018",
+                Genre = "Simulator",
+                ReleaseDate = new DateTime(2017, 06, 29)
+            },
+            new Game()
+            {
+                Name = "The Wizard 3",
+                Genre = "Action/RPG",
+                ReleaseDate = new DateTime(2012, 10, 06)
+            },
+             new Game()
+            {
+                Name = "Catch the Frog",
+                Genre = "Adventure",
+                ReleaseDate = new DateTime(2019, 05, 16)
+            }
+        };
+    }
+}
+
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead class="thead-light">
+            <tr>
+                <th>Name</th>
+                <th>Genre</th>
+                <th>Release Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (games == null)
+            {
+                <tr>LOADING DATA...</tr>
+            }
+            else if (games.Count() == 0)
+            {
+                <tr>NO ITEMS IN ARRAY</tr>
+            }
+            else
+            {
+                @foreach (var item in games)
+                {
+                    <tr>
+                        <td>@item.Name</td>
+                        <td>@item.Genre</td>
+                        <td>@item.ReleaseDate.ToString("dd.MM.yyyy")</td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
