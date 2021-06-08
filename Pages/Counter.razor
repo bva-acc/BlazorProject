@@ -4,6 +4,8 @@
 
 <p>Current count: @currentCount</p>
 
+<GameListTable Games="otherGames" />
+
 <button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
 
 @code {
@@ -12,5 +14,21 @@
     private void IncrementCount()
     {
         currentCount++;
+    }
+
+    List<Game> otherGames;
+
+    protected override void OnInitialized()
+    {
+        //Task.Delay(3000);
+        otherGames = new List<Game>()
+        {
+            new Game()
+            {
+                Name = "FM-Simulator 2013",
+                Genre = "Simulator",
+                ReleaseDate = new DateTime(2012, 06, 29)
+            }
+        };
     }
 }
