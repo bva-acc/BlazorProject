@@ -12,16 +12,23 @@
     </div>
 </div>
 
-<GameListTable Games="games"/>
+<GameListTable Games="games">
+    <NullList>
+        <tr><span style="text-align: center; color: red; font-weight: bolder">Element Loading ...</span></tr>
+    </NullList>
+    <EmptyList>
+        <tr><span style="text-align: center; color: blue;">No elements in array ...</span></tr>
+    </EmptyList>
+</GameListTable>
 
 <IndividualGame Game="oneGameToShow" IsTable="false" DisplayButtons="true" SwitchGame="ShowNewGame" />
 
 @code {
 
-        List<Game> games;
+    List<Game> games = new List<Game>();
 
-        Random rnd;
-        Game oneGameToShow;
+    Random rnd;
+    Game oneGameToShow;
 
     protected override void OnInitialized()
     {
