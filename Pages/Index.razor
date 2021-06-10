@@ -12,14 +12,7 @@
     </div>
 </div>
 
-<GameListTable Games="games">
-    <NullList>
-        <tr><span style="text-align: center; color: red; font-weight: bolder">Element Loading ...</span></tr>
-    </NullList>
-    <EmptyList>
-        <tr><span style="text-align: center; color: blue;">No elements in array ...</span></tr>
-    </EmptyList>
-</GameListTable>
+<GameListTable Games="games" />
 
 <IndividualGame Game="oneGameToShow" IsTable="false" DisplayButtons="true" SwitchGame="ShowNewGame" />
 
@@ -30,9 +23,9 @@
     Random rnd;
     Game oneGameToShow;
 
-    protected override void OnInitialized()
+    protected async override Task OnInitializedAsync()
     {
-        //Task.Delay(3000);
+        await Task.Delay(3000);
         games = new List<Game>()
         {
             new Game()
