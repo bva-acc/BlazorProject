@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BlazorProject.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Hosting;
@@ -27,6 +28,11 @@ namespace BlazorProject
         {
             services.AddRazorPages();
             services.AddServerSideBlazor();
+
+            services.AddSingleton<SingletonServices>(); // ’ранит данные до конца сессии, либо http-запроса
+            services.AddTransient<TransientServices>(); // —оздает новый экземпл€р
+
+            services.AddTransient<IRepository, MockGamesRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
