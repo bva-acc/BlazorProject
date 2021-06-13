@@ -14,9 +14,15 @@
     </div>
 </div>
 
-<GameListTable Games="games" />
+<GameListTable Games="games" @ref="gameList" />
 
 <IndividualGame Game="oneGameToShow" IsTable="false" DisplayButtons="true" SwitchGame="ShowNewGame" />
+
+<div class="row">
+    <div class="col text-center">
+        <button @onclick="AddNewGame" class="btn btn-success">Add New Game</button>
+    </div>
+</div>
 
 @code {
 
@@ -24,6 +30,9 @@
 
     Random rnd;
     Game oneGameToShow;
+
+    // Step 1
+    GameListTable gameList;
 
     protected async override Task OnInitializedAsync()
     {
@@ -54,5 +63,11 @@
         }
         else return new Game() { Name = "No items in array", ReleaseDate = DateTime.Now };
         return tempGame;
+    }
+
+    void AddNewGame()
+    {
+        gameList.DoSomething();
+        games.Add(new Game() { Name = "Game for test", Genre = "Test", ReleaseDate = DateTime.Today });
     }
 }
