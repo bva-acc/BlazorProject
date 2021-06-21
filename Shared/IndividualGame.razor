@@ -15,6 +15,14 @@
                     </div>
                 </div>
             }
+            @if (Game.Name.Equals("The Wizard 3") && AppStyle.WizardWords != null)
+            {
+                <div class="row mp-3 mt-3">
+                    <div class="col alert alert-light text-center">
+                        @AppStyle.WizardWords[rnd.Next(0, AppStyle.WizardWords.Count())]
+                    </div>
+                </div>
+            }
         </div>
     </div>
 }
@@ -44,4 +52,6 @@ else
     [Parameter] public EventCallback<Game> DeleteGame { get; set; }
     [Parameter] public EventCallback SwitchGame { get; set; }
 
+    [CascadingParameter] public AppStyle AppStyle { get; set; }
+    Random rnd = new Random(DateTime.Now.Millisecond);
 }

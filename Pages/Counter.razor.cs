@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using BlazorProject.Models;
+using Microsoft.AspNetCore.Components;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,10 @@ namespace BlazorProject.Pages
     {
         [Inject] SingletonServices singleton { get; set; }
         [Inject] TransientServices transient { get; set; }
+        //[CascadingParameter(Name = "Color")] public string Color { get; set; }
+        //[CascadingParameter(Name = "Size")] public string Size { get; set; }
+
+        [CascadingParameter] public AppStyle Styles { get; set; }
 
         private int currentCount = 0;
 
